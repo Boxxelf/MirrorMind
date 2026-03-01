@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MirrorMind</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 240px;
+      font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      background: #F5F5F5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0078D4 0%, #005A9E 100%);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.2px;
+    }
+
+    .header-text p {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 1px;
+      letter-spacing: 0.1px;
+    }
+
+    .body {
+      padding: 14px;
+    }
+
+    .tip {
+      background: #EFF6FC;
+      border: 1px solid #C7E0F4;
+      border-radius: 6px;
+      padding: 11px 12px;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .tip strong {
+      color: #0078D4;
+      font-weight: 600;
+    }
+
+    .shortcut {
+      display: inline-block;
+      font-family: 'Segoe UI', monospace;
+      background: #FFFFFF;
+      border: 1px solid #C7E0F4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 11px;
+      color: #0078D4;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .open-btn {
+      width: 100%;
+      padding: 9px 16px;
+      background: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.1px;
+      transition: background 0.1s ease;
+    }
+
+    .open-btn:hover { background: #106EBE; }
+    .open-btn:active { background: #005A9E; }
+
+    .footer {
+      padding: 9px 16px;
+      text-align: center;
+      font-size: 10px;
+      color: #8A8A8A;
+      border-top: 1px solid #E0E0E0;
+      letter-spacing: 0.1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>MirrorMind</h1>
+      <p>Media Bias Detector</p>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="tip">
+      <strong>How to use:</strong><br>
+      Select any text on a webpage, then click the blue <strong>Analyze</strong> button that appears above the selection.<br><br>
+      Or use the keyboard shortcut <span class="shortcut">Cmd+Shift+M</span> after selecting text.
+    </div>
+    <button class="open-btn" id="openSidebar">Open Sidebar Panel</button>
+  </div>
+
+  <div class="footer">Powered by Azure OpenAI &middot; SEP x Microsoft 2026</div>
+
+  <script>
+    document.getElementById("openSidebar").addEventListener("click", async () => {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      await chrome.sidePanel.open({ tabId: tab.id });
+      window.close();
+    });
+  </script>
+</body>
+</html>
