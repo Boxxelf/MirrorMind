@@ -8,22 +8,20 @@ Built for SEP × Microsoft for Startups Hackathon 2026
 ![Azure OpenAI](https://img.shields.io/badge/Azure-OpenAI-0078D4?logo=microsoftazure&logoColor=white)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-green)
 
----
 
 ## What it does
 
 MirrorMind is a Chrome extension that helps you think critically about what you read online. Select any text on any webpage and instantly get:
 
-- 🔍 **Bias Check** — Detects emotional tone, loaded language, and manipulation tactics
-- 📝 **Summarize** — 3-bullet summary of key points
-- 💡 **Simplify** — Plain language rewrite for complex text
-- ❓ **Critical Questions** — Questions to probe assumptions and missing perspectives
+-  **Bias Check** — Detects emotional tone, loaded language, and manipulation tactics
+-  **Summarize** — 3-bullet summary of key points
+-  **Simplify** — Plain language rewrite for complex text
+-  **Critical Questions** — Questions to probe assumptions and missing perspectives
 
 All powered by Azure OpenAI (GPT-4o-mini), with responses streaming in real time token-by-token directly in the Chrome Side Panel.
 
----
 
-## ⚡ Try it out (Quickstart)
+##  Try it out (Quickstart)
 
 A demo API key is included for judges and reviewers to test immediately — no Azure account needed.
 
@@ -46,9 +44,8 @@ git clone https://github.com/YOUR_USERNAME/mirrormind.git
 
 > ⚠️ The demo key is rate-limited and will be rotated after the hackathon. For long-term use, add your own Azure credentials (see below).
 
----
 
-## 🔑 Using your own Azure credentials
+##  Using your own Azure credentials
 
 If the demo key stops working, add your own:
 
@@ -62,7 +59,6 @@ const AZURE_API_KEY = "YOUR_AZURE_API_KEY";
 const AZURE_DEPLOYMENT = "gpt-4o-mini";
 ```
 
----
 
 ## How to use
 
@@ -73,9 +69,8 @@ const AZURE_DEPLOYMENT = "gpt-4o-mini";
 5. Watch the analysis stream in real time in the sidebar
 6. Switch between Bias Check / Summarize / Simplify / Questions modes
 
----
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 Chrome Extension (MV3)
@@ -87,21 +82,14 @@ Chrome Extension (MV3)
 **Message flow:**
 `Content Script` → (chrome.runtime.sendMessage) → `Background Worker` → (Azure OpenAI SSE) → `Background Worker` → (chrome.runtime.sendMessage) → `Side Panel`
 
----
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Chrome Extension Manifest V3** — Modern extension standard
 - **Azure OpenAI GPT-4o-mini** — Fast, cost-efficient AI inference
 - **Server-Sent Events (SSE) Streaming** — Real-time token-by-token output
 - **Chrome Side Panel API** — Persistent sidebar without blocking the page
 - **Vanilla JS + CSS** — Zero dependencies, lightweight and fast
-
----
-
-## 🏆 Prize Track
-
-**Most Technically Complex/Impressive**
 
 Technical highlights:
 - Real-time SSE streaming from Azure OpenAI rendered token-by-token in the UI
@@ -111,9 +99,8 @@ Technical highlights:
 - Markdown-to-HTML formatting pipeline for structured AI output
 - Service Worker lifecycle management under Manifest V3 constraints
 
----
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 mirrormind/
